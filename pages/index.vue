@@ -1,6 +1,7 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage></NuxtPage>
-  </NuxtLayout>
+  <div class="home">home</div>
 </template>
+
 <script setup lang="ts"></script>
+
+<style scoped></style>
