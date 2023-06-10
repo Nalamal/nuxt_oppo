@@ -1,8 +1,16 @@
 <template>
   <div class="grid-view">
+    <!-- 第一个item -->
+    <div class="view-item first" v-if="categoryUrl">
+      <img :src="categoryUrl" alt="Category" />
+    </div>
+
+    <!-- 剩余的item -->
     <template v-for="(item, index) in productDetailss" :key="index">
       <div class="view-item">
-        <grid-view-item :productDetail="item"></grid-view-item>
+        <slot>
+          <grid-view-item :productDetail="item"></grid-view-item>
+        </slot>
       </div>
     </template>
   </div>
@@ -13,10 +21,12 @@ import { IProductDetail } from "~/store/home";
 
 export interface IProps {
   productDetailss: IProductDetail[];
+  categoryUrl?: string;
 }
 
 const props = withDefaults(defineProps<IProps>(), {
   productDetailss: () => [],
+  categoryUrl: "",
 });
 </script>
 
@@ -45,6 +55,7 @@ const props = withDefaults(defineProps<IProps>(), {
       width: 100%;
       height: 100%;
       transition: all 0.2s linear;
+      /* 动画效果 */
       &:hover {
         @include hoverEffect();
       }

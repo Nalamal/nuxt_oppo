@@ -6,8 +6,10 @@
         :categorys="categorys"
         @item-click="handleItemClick"
       ></tab-category>
-      <section-title title="Find X 系列"></section-title>
-      <grid-view :productDetailss="categorys![1].productDetailss"></grid-view>
+
+      <template v-for="category in categorys" :key="category.id">
+        <section-category :category="category"></section-category>
+      </template>
     </div>
   </div>
 </template>
