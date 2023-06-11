@@ -6,7 +6,6 @@
         :categorys="categorys"
         @item-click="handleItemClick"
       ></tab-category>
-
       <template v-for="category in categorys" :key="category.id">
         <section-category :category="category"></section-category>
       </template>
@@ -23,7 +22,14 @@ const homeStore = useHomeStore();
 const { navbars, banners, categorys } = storeToRefs(homeStore);
 
 function handleItemClick(item: ICategory) {
-  console.log(item.title);
+  // console.log(item.title);
+  // 进行页面跳转 -> 编程导航 -> 不利于SEO
+  return navigateTo({
+    path: "/oppo-detail",
+    query: {
+      type: item.type,
+    },
+  });
 }
 </script>
 
